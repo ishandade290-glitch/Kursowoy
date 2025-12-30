@@ -1,23 +1,31 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { searchSchema } from "../schemas/searchSchema";
-
+import { useState } from "react";
 
 function SearchForm({ onSearch }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(searchSchema),
-  });
+  const [query, setQuery] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!query.trim()) return;
+    onSearch(query);
+  };
 
   return (
-    <form onSubmit={handleSubmit(data => onSearch(data.query))}>
-      <input {...register("query")} />
-      {errors.query && <p>{errors.query.message}</p>}
-      <button type="submit">Поиск</button>
+    <form className="mx-auto flex max-w-xl gap-2" onSubmit={handleSubmit}>
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Поиск книг..."
+        className="flex-1 rounded-lg border border-slate-300 px-4 py-2 focus:border-blue-500 focus:outline-none"
+      />
+
+      <button
+        type="submit"
+        className="rounded-lg bg-blue-600 px-6 py-2 font-semibold text-white transition hover:bg-blue-700"
+      >
+        Найти
+      </button>
     </form>
   );
 }
-export default SearchForm
+
+export default SearchForm;

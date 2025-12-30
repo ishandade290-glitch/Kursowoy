@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import BookPage from "./pages/BookPage";
+import "./styles/index.css"
 
 function App() {
   return (

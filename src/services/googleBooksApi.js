@@ -11,3 +11,13 @@ export async function searchBooks(query, startIndex = 0) {
 
   return response.json();
 }
+
+export async function getBookById(id) {
+  const response = await fetch(`${BASE_URL}/${id}`);
+
+  if (!response.ok) {
+    throw new Error("Книга не найдена");
+  }
+
+  return response.json();
+}

@@ -1,19 +1,26 @@
-export default function BookItem({ book }) {
-  const info = book.volumeInfo;
+function BookItem({ book }) {
+  const { title, authors, imageLinks } = book.volumeInfo;
+
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row gap-4 hover:shadow-lg transition">
-      {info.imageLinks?.thumbnail && (
-        <img
-          src={info.imageLinks.thumbnail}
-          alt={info.title}
-          className="w-full md:w-24 h-auto object-cover rounded"
-        />
-      )}
-      <div className="flex-1">
-        <h3 className="font-semibold text-lg text-gray-800 mb-1">{info.title}</h3>
-        <p className="text-gray-600 mb-2">{info.authors?.join(", ")}</p>
-        <p className="text-gray-500 text-sm">{info.description?.slice(0, 120)}{info.description && "..."}</p>
-      </div>
+    <div className="flex h-full flex-col rounded-xl bg-white p-4 shadow-sm transition hover:shadow-lg">
+      <img
+        src={
+          imageLinks?.thumbnail ||
+          "https://via.placeholder.com/128x192?text=No+Cover"
+        }
+        alt={title}
+        className="mb-4 h-48 w-full rounded-lg object-cover"
+      />
+
+      <h3 className="mb-2 line-clamp-2 text-lg font-semibold text-slate-800">
+        {title}
+      </h3>
+
+      <p className="text-sm text-slate-500">
+        {authors?.join(", ") || "Автор неизвестен"}
+      </p>
     </div>
   );
 }
+
+export default BookItem;
