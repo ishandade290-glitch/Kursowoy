@@ -56,7 +56,7 @@ function BookPage() {
           <img
             src={imageLinks?.thumbnail || "https://via.placeholder.com/150x220"}
             alt={title}
-            className="h-[220px] w-[150px] rounded-md object-cover shadow"
+            className="h-55 w-37.5 rounded-md object-cover shadow"
           />
 
           {/* Информация */}
