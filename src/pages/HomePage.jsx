@@ -41,7 +41,6 @@ function HomePage() {
         {loading && <p className="mt-6 text-center">Загрузка...</p>}
         {error && <p className="mt-6 text-center text-red-500">{error}</p>}
 
-        {/* 🔥 АНИМАЦИЯ */}
         <div
           className={`mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
             transition-opacity duration-300

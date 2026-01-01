@@ -33,7 +33,6 @@ export function useBooks() {
     }
   };
 
-  // 🔥 ЗАГРУЗКА ПРИ ОТКРЫТИИ СТРАНИЦЫ
   useEffect(() => {
     fetchBooks(DEFAULT_QUERY, 1);
   }, []);
